@@ -41,9 +41,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Intent check=getIntent();
         boolean randomswitch= check.getBooleanExtra("randomswitch",true);
-
+                guesswrong=check.getIntExtra("guesstime",0)  ;
+                answer=check.getIntExtra("answer",0);
      if(randomswitch==true){
         answer=(int)(Math.random()*9)+1;
         check.putExtra("randomswitch",false);
@@ -143,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(1!=answer){
+                if(6!=answer){
                     guesswrong++;
                 }
 
