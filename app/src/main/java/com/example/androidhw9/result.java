@@ -16,7 +16,7 @@ boolean randomswitch;
         setContentView(R.layout.activity_result);
         Intent check = getIntent();
         final int answer = check.getIntExtra("answer", 0);
-        int guessanswer = check.getIntExtra("guessanwser", 0);
+        int guessanswer = check.getIntExtra("guessanswer", 0);
         final int guesstime = check.getIntExtra("guesstime", 0);
 
         TextView truefalse=(TextView)findViewById(R.id.truefalse);
