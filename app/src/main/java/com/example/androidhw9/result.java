@@ -9,7 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class result extends AppCompatActivity {
-boolean randomswitch;
+    boolean randomswitch;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,39 +20,37 @@ boolean randomswitch;
         int guessanswer = check.getIntExtra("guessanswer", 0);
         final int guesstime = check.getIntExtra("guesstime", 0);
 
-        TextView truefalse=(TextView)findViewById(R.id.truefalse);
-        TextView guesstimetext=(TextView)findViewById(R.id.guesstime);
-        Button again=(Button)findViewById(R.id.btnagain);
+        TextView truefalse = (TextView) findViewById(R.id.truefalse);
+        TextView guesstimetext = (TextView) findViewById(R.id.guesstime);
+        Button again = (Button) findViewById(R.id.btnagain);
 
-        if(answer==guessanswer){
+        if (answer == guessanswer) {
             truefalse.setText("O");
-            guesstimetext.setText("恭喜你花了"+guesstime+"次猜對!^_^");
+            guesstimetext.setText("恭喜你花了" + guesstime + "次猜對!^_^");
             again.setText("在玩一次");
-            randomswitch=true;
-        }
-        else if(answer!=guessanswer){
+            randomswitch = true;
+        } else if (answer != guessanswer) {
 
             truefalse.setText("X");
             again.setText("在猜一次");
-            randomswitch=false;
-            if(guessanswer>answer){
-                guesstimetext.setText("你已經猜錯"+guesstime+"次!(提示:猜太大)");
-            }
-            else if(guessanswer<answer){
-                guesstimetext.setText("你已經猜錯"+guesstime+"次!(提示:猜太小)");
+            randomswitch = false;
+            if (guessanswer > answer) {
+                guesstimetext.setText("你已經猜錯" + guesstime + "次!(提示:猜太大)");
+            } else if (guessanswer < answer) {
+                guesstimetext.setText("你已經猜錯" + guesstime + "次!(提示:猜太小)");
             }
         }
 
-again.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Intent check=new Intent(result.this,MainActivity.class);
-        check.putExtra("answer", answer);
-        check.putExtra("guesstime",guesstime);
-        check.putExtra("randomswitch",randomswitch);
-        startActivity(check);
-    }
-});
+        again.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent check = new Intent(result.this, MainActivity.class);
+                check.putExtra("answer", answer);
+                check.putExtra("guesstime", guesstime);
+                check.putExtra("randomswitch", randomswitch);
+                startActivity(check);
+            }
+        });
 
     }
 }
